@@ -1,3 +1,3 @@
-Oliminator is a content creator and internet meme, real name Oliver
+Oliminator is a content creator, real name Oliver
 
-[Oliver Oliminator](https://oliminator.net/)
+[Oliminator](https://oliminator.net/)
