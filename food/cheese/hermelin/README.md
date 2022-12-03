@@ -1,0 +1,1 @@
+Hermelín is the name given to a Czech cheese with a white noble mould on the surface, which is an imitation of the French camembert cheese. It is sold on the Czech and Slovak markets under various commercial names. 
