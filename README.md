@@ -4,7 +4,7 @@
   <br>
 </h1>
 
-<h4 style="text-align: center">Version of <a href="https://github.com/xHyroM" target="_blank">Hyro's</a> profile pictures, different hats or items in mouth.</h4>
+<h4 align="center">Version of <a href="https://github.com/xHyroM" target="_blank">Hyro's</a> profile pictures, different hats or items in mouth.</h4>
 
 <p align="center">
     <a href="https://discord.gg/kFPKmEKeMS/" alt="Discord">
