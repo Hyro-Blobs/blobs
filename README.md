@@ -27,4 +27,8 @@ To contribute to this project, please follow the [standard Git workflow](https:/
 4. Push the branch: `git push origin new-cool-blob`
 5. Open a pull request
 
+## License
+
+This project is licensed under the [MPL-2.0 License](LICENSE).
+
 _By: [Fire-The-Fox](https://github.com/Fire-The-Fox) and [xHyroM](https://github.com/xHyroM)_
