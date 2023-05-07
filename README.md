@@ -7,7 +7,7 @@
 <h4 align="center">Version of <a href="https://github.com/xHyroM" target="_blank">Hyro's</a> profile pictures, different hats or items in mouth.</h4>
 
 <p align="center">
-    <a href="https://discord.gg/kFPKmEKeMS/" alt="Discord">
+    <a href="https://s.xhyrom.dev/discord" alt="Discord">
         <img src="https://img.shields.io/discord/1046534628577640528?label=discord&style=for-the-badge&color=2fbfc4"/>
     </a>
 </p>
