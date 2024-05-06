@@ -22,6 +22,8 @@ jobs:
           token: ${{ secrets.GITHUB_TOKEN }}
 
       - run: |
+          echo ${{ github.event.pull_request.head.ref }}
+          echo ${{ github.event.pull_request.head.label }}
           sudo apt update -y && sudo apt upgrade -y
           sudo apt install -y exiftool
 
@@ -36,4 +38,4 @@ jobs:
         uses: actions-js/push@master
         with:
           github_token: "${{ secrets.GITHUB_TOKEN }}"
-          branch: refs/pull/${{ github.event.number }}/merge
+          branch: ${{ github.event.pull_request.head.ref }}
