@@ -22,6 +22,9 @@ function parseBody(body: string): Creator | null {
 
   for (const line of lines) {
     const [key, value] = line.split(":");
+    if (!key || !value) {
+      continue;
+    }
     result[key.trim()] = value.trim();
   }
 
