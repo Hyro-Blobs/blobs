@@ -23,6 +23,8 @@ const rawBody = await getBody();
 if (!rawBody.includes("Delete only if you're not adding artwork.")) {
   await addLabels(["manual"]);
   process.exit(0);
+} else {
+  await addLabels(["artwork"]);
 }
 
 const body = parseBody(rawBody);
