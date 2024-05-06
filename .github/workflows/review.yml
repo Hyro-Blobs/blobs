@@ -1,0 +1,36 @@
+name: Review
+on:
+  pull_request_target: {}
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  review:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: refs/pull/${{ github.event.number }}/merge
+      - uses: oven-sh/setup-bun@v1
+
+      - name: Get changed files
+        uses: lots0logs/gh-action-get-changed-files@e5c59575dff4a94f74c6cc609a77c71f0becf7ec
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - run: |
+          sudo apt update -y && sudo apt upgrade -y
+          sudo apt install -y exiftool
+
+      - run: bun review
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          COMMIT_SHA: ${{ github.event.pull_request.head.sha }}
+          PR_NUMBER: ${{ github.event.pull_request.number }}
+
+      - name: Push changes
+        uses: actions-js/push@master
+        with:
+          github_token: "${{ secrets.GITHUB_TOKEN }}"
