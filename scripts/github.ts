@@ -58,7 +58,7 @@ async function removeLabel(label: string) {
 
 async function getBody() {
   const response = await fetch(
-    `https://api.github.com/repos/xHyroM/bun-discord-bot/pulls/${pullRequestNumber}`
+    `https://api.github.com/repos/Hyro-Blobs/blobs/pulls/${pullRequestNumber}`
   );
   const data = (await response.json()) as { body: string };
   return data.body;
