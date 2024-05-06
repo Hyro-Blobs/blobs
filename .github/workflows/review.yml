@@ -21,6 +21,7 @@ jobs:
           token: ${{ secrets.GITHUB_TOKEN }}
 
       - run: |
+          ls
           sudo apt update -y && sudo apt upgrade -y
           sudo apt install -y exiftool
 
