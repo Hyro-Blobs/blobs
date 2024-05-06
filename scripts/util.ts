@@ -21,10 +21,10 @@ function parseBody(body: string): Creator | null {
   const result: Record<string, string> = {};
 
   for (const line of lines) {
-    const [key, value] = line.split(":");
+    const [key, ...value] = line.split(":");
     if (!key || !value) continue;
 
-    result[key.trim()] = value.trim();
+    result[key.trim()] = value.toString().trim();
   }
 
   result["name"] = result["Creator Name"].trim();
