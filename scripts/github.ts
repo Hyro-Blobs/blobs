@@ -58,7 +58,13 @@ async function removeLabel(label: string) {
 
 async function getBody() {
   const response = await fetch(
-    `https://api.github.com/repos/Hyro-Blobs/blobs/pulls/${pullRequestNumber}`
+    `https://api.github.com/repos/Hyro-Blobs/blobs/pulls/${pullRequestNumber}`,
+    {
+      headers: {
+        Accept: "application/vnd.github+json",
+        Authorization: `token ${githubToken}`,
+      },
+    }
   );
   const data = (await response.json()) as { body: string };
   return data.body;
