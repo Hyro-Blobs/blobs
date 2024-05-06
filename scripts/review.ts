@@ -89,17 +89,7 @@ if (errors.length > 0) {
   process.exit(0);
 }
 
-if (success.length > 0) {
-  await createReview(
-    "APPROVE",
-    ["## The following things were successfully done:", ...success].join("\n")
-  );
-} else {
-  await createReview(
-    "APPROVE",
-    "No problems found 🎉, contacting maintainers."
-  );
-}
+await createReview("APPROVE", "No problems found 🎉, contacting maintainers.");
 
 await requestReviewers(["xHyroM", "LowByteFox"]);
 await removeLabel("waiting");
