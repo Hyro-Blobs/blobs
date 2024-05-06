@@ -20,6 +20,10 @@ jobs:
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
 
+      - run: |
+          sudo apt update -y && sudo apt upgrade -y
+          sudo apt install -y exiftool
+
       - run: bun review
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

@@ -8,23 +8,11 @@ import {
   removeLabel,
   requestReviewers,
 } from "./github";
-import { parseBody } from "./util";
-
-const a = await $`echo asd`.text();
+import { addToCreators, parseBody } from "./util";
 
 const files = (await Bun.file(
   join(import.meta.dir, "..", "files.json")
 ).json()) as string[];
-if (files.includes("creators.json")) {
-  console.log("files.json contains creators");
-
-  await createReview(
-    "REQUEST_CHANGES",
-    ["You don't need to modify creators.json itself"].join("\n")
-  );
-  await addLabels(["waiting"]);
-  process.exit(0);
-}
 
 if (!files.some((f) => f.includes("categories"))) {
   console.error("files.json does not contain categories");
@@ -32,6 +20,11 @@ if (!files.some((f) => f.includes("categories"))) {
 }
 
 const rawBody = await getBody();
+if (!rawBody.includes("Delete only if you're not adding artwork.")) {
+  await addLabels(["manual"]);
+  process.exit(0);
+}
+
 const body = parseBody(rawBody);
 
 if (!body || !body.name || !body.image || !body.github) {
@@ -48,6 +41,10 @@ if (!body || !body.name || !body.image || !body.github) {
   );
   await addLabels(["waiting"]);
   process.exit(0);
+}
+
+if (!files.includes("creators.json")) {
+  await addToCreators(body.name, body.image, body.github);
 }
 
 const errors = [];

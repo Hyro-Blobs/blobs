@@ -1,8 +1,13 @@
-function parseBody(body: string): {
-  name?: string;
-  image?: string;
-  github?: string;
-} | null {
+import { join } from "node:path";
+import { writeFileSync } from "node:fs";
+
+interface Creator {
+  name: string;
+  image: string;
+  github: string;
+}
+
+function parseBody(body: string): Creator | null {
   const start = body.indexOf("<!-- ARTWORK START -->");
   const end = body.indexOf("<!-- ARTWORK END -->");
 
@@ -24,7 +29,26 @@ function parseBody(body: string): {
   result["image"] = result["Creator Profile Image"].trim();
   result["github"] = result["Creator GitHub"].trim();
 
-  return result;
+  return {
+    name: result["name"],
+    image: result["image"],
+    github: result["github"],
+  };
 }
 
-export { parseBody };
+async function addToCreators(name: string, image: string, github: string) {
+  const creators: Array<Creator> = await Bun.file(
+    join(import.meta.dir, "..", "creators.json")
+  ).json();
+
+  creators.push({ name, image, github });
+
+  creators.sort((a, b) => a.name.localeCompare(b.name));
+
+  await writeFileSync(
+    join(import.meta.dir, "..", "creators.json"),
+    JSON.stringify(creators, null, 2)
+  );
+}
+
+export { parseBody, addToCreators };
