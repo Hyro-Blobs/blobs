@@ -17,11 +17,11 @@ jobs:
 
       - name: Get changed files
         uses: lots0logs/gh-action-get-changed-files@e5c59575dff4a94f74c6cc609a77c71f0becf7ec
+        id: changes
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
 
       - run: |
-          ls
           sudo apt update -y && sudo apt upgrade -y
           sudo apt install -y exiftool
 
@@ -30,6 +30,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           COMMIT_SHA: ${{ github.event.pull_request.head.sha }}
           PR_NUMBER: ${{ github.event.pull_request.number }}
+          CHANGED_FILES: ${{ steps.changes.outputs.all }}
 
       - name: Push changes
         uses: actions-js/push@master

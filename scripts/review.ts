@@ -1,5 +1,5 @@
 import { $ } from "bun";
-import { join, extname } from "node:path";
+import { extname } from "node:path";
 import { unlink } from "node:fs/promises";
 import {
   addLabels,
@@ -10,9 +10,7 @@ import {
 } from "./github";
 import { addToCreators, parseBody } from "./util";
 
-const files = (await Bun.file(
-  join(import.meta.dir, "..", "files.json")
-).json()) as string[];
+const files = JSON.parse(process.env.CHANGED_FILES!) as string[];
 
 if (!files.some((f) => f.includes("categories"))) {
   console.error("files.json does not contain categories");
