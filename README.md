@@ -1,6 +1,6 @@
 <h1 align="center">
   <br>
-  <img src="https://github.com/Hyro-Blobs/blobs/blob/main/base/hyro_blob-upscaled.png?raw=true" alt="hyro blob upscaled" width="256">
+  <img src="https://raw.githubusercontent.com/Hyro-Blobs/blobs/main/template/hyro_blob-upscaled.png" alt="hyro blob upscaled" width="256">
   <br>
 </h1>
 
